@@ -2,14 +2,15 @@ public class Java2Lesson5 {
 
     static final int sizeArray = 2000000;
     static final int half = sizeArray / 2;
-    static float value;
+   // static float value;
     static int i;
 
 
     public static void main(String[] args) {
 
         float[] array = new float[sizeArray];
-        value = (float) (value * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+       // value = (float) (value * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+
 
         calcArrayNewValues(array);
         createNewArray(array);
@@ -23,7 +24,8 @@ public class Java2Lesson5 {
         long time = System.currentTimeMillis();
 
         for (i = 0; i < sizeArray; i ++) {
-            array[i] = value;
+           // array[i] = value;
+            array[i] = (float) (array[i] * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
 
         System.out.println(System.currentTimeMillis() - time); //это мы высчитали разницу во времени, используя системное время до цикла и после.
@@ -50,13 +52,15 @@ public class Java2Lesson5 {
         //создаем потоки для высчитывания новых значений каждой половины массива
         Thread thread1 = new Thread(() -> {
             for (i = 0; i < half; i ++) {
-                halfArray1[i] = value;
+                //halfArray1[i] = value;
+                halfArray1[i] = (float) (array[i] * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
         });
 
         Thread thread2 = new Thread(() -> {
             for (i = 0; i < half; i ++) {
-                halfArray2[i] = value;
+                //halfArray2[i] = value;
+                halfArray2[i] = (float) (array[i] * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
         });
 
@@ -69,7 +73,7 @@ public class Java2Lesson5 {
         System.arraycopy(halfArray2, 0, array, half, half);
 
         System.out.println(System.currentTimeMillis() - time);
-
     }
+
 
 }
