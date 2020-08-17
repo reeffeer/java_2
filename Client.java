@@ -1,11 +1,10 @@
-import javax.swing.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client extends JFrame {
+public class Client {
 
     private final static String SERVER_ADDR = "localhost";
     private final static int SERVER_PORT = 8189;
